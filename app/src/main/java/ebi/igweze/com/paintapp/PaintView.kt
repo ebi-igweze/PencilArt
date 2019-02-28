@@ -8,6 +8,7 @@ import android.view.View
 import java.util.*
 import android.view.MotionEvent
 import android.R.attr.strokeWidth
+import android.app.Activity
 import android.graphics.Bitmap
 import android.util.DisplayMetrics
 
@@ -43,6 +44,11 @@ class PaintView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     init {
         mEmboss = EmbossMaskFilter(floatArrayOf(1f, 1f, 1f), 0.4f, 6f, 3.5f)
         mBlur = BlurMaskFilter(5f, BlurMaskFilter.Blur.NORMAL)
+
+        val metrics = DisplayMetrics()
+        val activity  = context as Activity
+        activity.windowManager.defaultDisplay.getMetrics(metrics)
+        init(metrics)
     }
 
 
